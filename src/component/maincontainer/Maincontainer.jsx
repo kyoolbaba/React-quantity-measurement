@@ -3,7 +3,8 @@ import Units from './Units.jsx'
 class MainContainer extends Component{
 render(){
     return(
-        <div>
+        <div className="MainContainer">
+        <h1>Choose Type</h1>
         <Units/>
         </div>
     )
