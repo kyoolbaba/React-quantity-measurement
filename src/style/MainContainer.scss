@@ -30,7 +30,7 @@ $font: 'Montserrat', sans-serif;
 width:50%;
 top:15%;
 height:30%;
-left: 15%;
+left: 17%;
 @include flex-variables(row,space-around );
 align-items: center;
 }
@@ -65,10 +65,10 @@ align-items: center;
 .unit-caption{
     font:$font;
     position:relative;
-    color:rgb(212, 212, 212);
+    color:rgba(85, 85, 85, 0.349);
     text-align:center;
-    color:rgb(192, 192, 192);
-    top:15px;
+    top:23%;
+    font-weight: bold;
 }
 
 .unit-box {
@@ -78,7 +78,14 @@ align-items: center;
     position: relative;
     width:170px;
     left: 21%;
-    height:90%;
+    height:80%;
+    color:rgb(197, 197, 197);
+    
     top:-30%;
-    border-radius: 10px;;
+    border-radius: 3px;;
+    transition: 1s
+}
+
+.unit.box:hover{
+    transition:3s
 }
