@@ -1,0 +1,222 @@
+    $font:'Mulish', sans-serif;
+    $backgroundblue:#446DFF;
+    $textcolor:#FFFFFF;
+/* HEader  start*/
+
+.LogoName{
+    float: left;
+    font-size:1.2rem;
+    position:relative;
+    left:10%;
+  }
+  
+  .History{
+    float:right;
+    position: relative;
+    right: 10%;
+    top:15px;
+  }
+  
+
+  
+ 
+  .WelcomeHeading{
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background-color: $backgroundblue;
+    color: $textcolor;
+    font-family: $font;
+    text-transform: capitalize;
+    height: 60px;
+    top:60px;
+    word-wrap: break-word;
+
+  }
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:22px;
+    left:-5%;
+    width: 100%;
+    line-height: 20px;
+    letter-spacing: .08rem;
+    font-weight: 200;
+    font-size: 1.15rem;
+    transition:1s;
+  }
+
+@media screen and (min-width:786px){
+  .LogoName{
+    float: left;
+    font-size:1.2rem;
+    position:relative;
+    left:10%;
+  }
+  
+  .History{
+    float:right;
+    position: relative;
+    right: 10%;
+    top:15px;
+  }
+  
+
+  
+ 
+  .WelcomeHeading{
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background-color: $backgroundblue;
+    color: $textcolor;
+    font-family: $font;
+    text-transform: capitalize;
+    height: 60px;
+    top:60px;
+    word-wrap: break-word;
+  }
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:22px;
+    left:-5%;
+    width: 100%;
+    line-height: 20px;
+    letter-spacing: .08rem;
+    font-weight: 200;
+    font-size: 1.5rem;
+    transition:1s;
+  }
+}
+
+@media screen and (width:360px){
+  .LogoName{
+    float: left;
+    font-size:1.2rem;
+    position:relative;
+    left:10%;
+  }
+  
+  .History{
+    float:right;
+    position: relative;
+    right: 10%;
+    top:15px;
+  }
+  
+
+  
+ 
+  .WelcomeHeading{
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background-color: $backgroundblue;
+    color: $textcolor;
+    font-family: $font;
+    text-transform: capitalize;
+    height: 60px;
+    top:60px;
+    word-wrap: break-word;
+
+  }
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:8px;
+    left:-5%;
+    width: 100%;
+    line-height: 20px;
+    letter-spacing: .08rem;
+    font-weight: 200;
+    font-size: 1.1rem;
+    transition:1s;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  
+
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:10px;
+    left:-5%;
+    width: 100%;
+    letter-spacing: .08rem;
+    font-weight: 200;
+    font-size: 1.2rem;
+    transition:1s;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  
+
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:10px;
+    left:-5%;
+    width: 100%;
+    letter-spacing: .08rem;
+    font-weight: 200;
+    font-size: 1.1rem;
+    transition:1s;
+  }
+}
+
+@media screen and (max-width: 335px) {
+  
+
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:10px;
+    left:-7%;
+    width: 100%;
+    font-weight: 200;
+    font-size: .5rem;
+    transition:1s;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  
+
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:10px;
+    left:-7%;
+    width: 100%;
+    letter-spacing: .08rem;
+    font-weight: 200;
+    font-size: 1rem;
+    transition:1s;
+  }
+}
+@media screen and (max-width: 300px) {
+  
+
+
+  .WelcomeHeading-text{
+    font-family: $font;
+    position: relative;
+    top:10px;
+    left:-7%;
+    width: 100%;
+    letter-spacing: .08rem;
+    font-weight: 700;
+    font-size: .63rem;
+    transition:1s;
+  }
+}
