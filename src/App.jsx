@@ -1,8 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import './style/header.scss'
-import './style/MainContainer.scss'
+
 import Header from './component/header/Header.jsx'
 import MainContainer from './component/maincontainer/Maincontainer.jsx'
 function App() {

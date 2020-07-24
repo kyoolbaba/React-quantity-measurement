@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+$font:'Montserrat', sans-serif;
+.UnitInput{
+    position: relative;
+    top:10%;
+    height:40%;
+    width:100%;
+   display:flex;
+   justify-content:center;
+
+   .UnitInput-From {
+       width:50%;
+     float: right;
+     position: relative;
+     .from{
+         position:relative;
+         left:11%;
+         font-family: $font;
+         text-transform: uppercase;
+         font-size: .7rem;
+     }
+      input{
+        width:44%; 
+        position: relative;
+        left:31%;
+        height: 40px;
+        outline: none;
+        font-size: 1.5rem;
+    }
+   }
+
+   .UnitInput-To {
+    width:50%;
+  
+    input{
+        width:44%; 
+        position: relative;
+        left:-20%;
+        height: 40px;
+        outline: none;
+        font-size: 1.5rem;
+      }
+      .to{
+          position: relative;
+         left:-41%;
+         font-family: $font;
+         text-transform: uppercase;
+         font-size: .7rem;
+     }
+}
+}
