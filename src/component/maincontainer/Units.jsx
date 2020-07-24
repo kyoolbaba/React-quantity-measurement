@@ -11,6 +11,7 @@ function Units  (){
     const[imagesupdate,updateImage]=useState([scaleon,degreeoff,voloff]);
     const[imageson]=useState([scaleon,degreeon,volon])
     const[selectedUnit,setSelectedUnit]=useState(0);
+    const[unitSelected,updateUnit]=useState('Length');
     const[units]=useState(["Length","Temperature","Volume"])
     const [colorhover]=useState(['#00ff625e','#ff00005b','#0033ff5b'])
     const[color,resetColor]=useState(['#00ff625e     ','#FFFFFF ','#FFFFFF '])
@@ -65,10 +66,15 @@ function Units  (){
                 arr[i]=imagesof[i];
                 color[i]='#EEEEEE'
                 textcolor[i]='rgba(85, 85, 85, 0.349)'
+                actual_color[i]='none'
             }
         }
         updateImage(arr);
         setSelectedUnit(n)
+        updateUnit(units[n])
+
+        console.log(units[n])
+        // console.log(unitSelected)
     }
     return(
         <div className="Units">
