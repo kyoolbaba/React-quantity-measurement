@@ -1,5 +1,5 @@
-
-$font:'Mulish', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+$font: 'Montserrat', sans-serif;
 
 @mixin flex-variables($direction,$justify){
     display: flex;
@@ -28,7 +28,8 @@ $font:'Mulish', sans-serif;
 .Units{
     position: relative;
 width:50%;
-height:100%;
+top:15%;
+height:30%;
 left: 15%;
 @include flex-variables(row,space-around );
 align-items: center;
@@ -38,9 +39,9 @@ align-items: center;
 
 .imgoff{
     position:relative;
-    height:60px;
-    border: 3px solid ;
-    width:50px;
+    height:45px;
+    width:35px;
+    top:10px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top:10px;
@@ -64,17 +65,20 @@ align-items: center;
 .unit-caption{
     font:$font;
     position:relative;
-  
+    color:rgb(212, 212, 212);
     text-align:center;
-    color:gray;
+    color:rgb(192, 192, 192);
+    top:15px;
 }
 
 .unit-box {
     width: 110px;
-    border: 1px solid;
+    box-shadow: 1px 1px 2px 2px #9b9999;
     align-items: center;
     position: relative;
     width:170px;
     left: 21%;
+    height:90%;
     top:-30%;
+    border-radius: 10px;;
 }

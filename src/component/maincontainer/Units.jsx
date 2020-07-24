@@ -14,9 +14,12 @@ function Units  (){
     const[background_color,setBackground_color]=useState('')
     const[background_color_hover,setBackground_color_hover]=useState('')
     const[units]=useState(["Length","Temperature","Volume"])
-    const [color]=useState(['green','red','blue'])
-    const[border]=useState(['gray'])
-
+    const [colorhover]=useState(['#00ff625e','#ff00005b','#0033ff5b'])
+    const[color,resetColor]=useState(['#00ff625e','#EEEEEE','#EEEEEE'])
+    const[colorset]=useState(['#EEEEEE','#EEEEEE','#EEEEEE'])
+    const[textcolorhover]=useState(['rgb(0, 155, 90)','#ff0000ce','#006eff'])
+    const[textcolor]=useState(['#000000','#000000','#000000'])
+    const[border_color]=useState(['#00f396d5','#ff0000ce','#006eff'])
 
 
     function mouseOver(n){
@@ -30,6 +33,8 @@ function Units  (){
             }
         }
         updateImage(arr);
+        color[n]=colorhover[n]
+        textcolor[n]=textcolorhover[n]
     }
 
     function mouseleave(n){
@@ -38,14 +43,15 @@ function Units  (){
             return'';
         }
         for(let i=0;i<imagesof.length;i++){
-        
-         
+            
             if(i===n){
                 arr[i]=imagesof[i]
             }else{
                 arr[i]=imagesupdate[i];
             }
         }
+        color[n]='#EEEEEE'
+        textcolor[n]='#000000'
         updateImage(arr);
     }
 
@@ -57,6 +63,8 @@ function Units  (){
                 arr[i]=imageson[i]
             }else{
                 arr[i]=imagesof[i];
+                color[i]='#EEEEEE'
+                textcolor[i]='#000000'
             }
         }
         updateImage(arr);
@@ -65,13 +73,19 @@ function Units  (){
     return(
         <div className="Units">
         {imagesupdate.map((e,index)=>{
-         return  <div className="unit-box" >  <img className="imgoff"
-         onClick={()=>click(index)}
+         return  <div className="unit-box"
+         style={{backgroundColor:color[index], 
+        }}
+        onClick={()=>click(index)}
          onMouseOver={()=>mouseOver(index)}
-         onMouseLeave={()=>(mouseleave(index))}
+         onMouseLeave={()=>(mouseleave(index))
+        }
+         >  <img className="imgoff"
+         
           src={e} 
-            style={{backgroundColor:color[index]}}
-          /> <div className="unit-caption">{units[index]}</div>  </div>
+          /> <div   className="unit-caption"
+          style={{color:textcolor[index]}}
+          >{units[index]}</div>  </div>
         })}
         </div>
     )
