@@ -1,12 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import scaleoff from '../../Assets/lengthoff.svg'
 import degreeoff from '../../Assets/tempoff.svg'
 import degreeon from '../../Assets/tempon.svg'
 import scaleon from '../../Assets/lengthon.svg'
 import voloff from '../../Assets/volumeoff.svg'
 import volon from '../../Assets/volon.svg'
-
-function Units  (){
+import Unit from './Unit'
+const Units =  (props)=>{
+    // const[actualUnitPresent,setUnit,sendSubUnits]=useState(Unit);  
     const[imagesof,setImageBack]=useState([scaleoff,degreeoff,voloff]);
     const[imagesupdate,updateImage]=useState([scaleon,degreeoff,voloff]);
     const[imageson]=useState([scaleon,degreeon,volon])
@@ -19,7 +20,10 @@ function Units  (){
     const[textcolor]=useState(['rgb(0, 155, 90)',' rgba(85, 85, 85, 0.349)','rgba(85, 85, 85, 0.349)'])
     const[border_color]=useState(['1px solid #00f396d5','1px solid #ff0000ce','1px solid #006eff'])
     const[actual_color]=useState(['none',' none','none'])
-
+ 
+    // useEffect(() => {
+    //      props.setUnit(selectedUnit)
+    // })
 
     function mouseOver(n){
         const arr=[];
@@ -72,7 +76,9 @@ function Units  (){
         updateImage(arr);
         setSelectedUnit(n)
         updateUnit(units[n])
-
+        // setUnit(n)
+        props.setUnit(n);
+        console.log(n+"Printing from UnitsHooks")
         console.log(units[n])
         // console.log(unitSelected)
     }
