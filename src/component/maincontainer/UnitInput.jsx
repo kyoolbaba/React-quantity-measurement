@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import UnitHook from './UnitsHook.jsx'
 import UH from './Unit'
+import Select from 'react-select';
 const UnitInput=(props)=>{
     const[temperature]=useState(['Farenhiet','Celcius','Kelvin'])
     const[length]=useState(['Centimeter','Millimeter','Inch','Foot','Kilometer','Yard'])
@@ -8,12 +9,24 @@ const UnitInput=(props)=>{
     const[units]=useState([length,temperature,volume])
     const[firstoption,updateFirstOption]=useState(1)
     const[secondoption,updateSecondOption]=useState(2)
-
+    const[data,setData]=useState()
     // const disableUnit=(e)=>{
     //     e.target.value
     // }
 
     // const[u,setu]=UH("");
+
+    // useEffect(()=>{
+    //     const datatook=[];
+    //     units[props.unitindex].map((e)=>{
+    //         datatook.push({value:e,label:e})
+    //     }
+    //     )
+    //     setData(datatook)
+    //     console.log(datatook)
+    // })
+        
+
     return(
         <div className="UnitInput">
         <div className="UnitInput-From">
@@ -27,7 +40,7 @@ const UnitInput=(props)=>{
                     if(index==={firstoption}){
                          select="selected"
                     }
-                  return   <option  Style={{selected:{select}}}  className="UnitOptionTag" value={index}>{unit}</option>
+                  return   <option  Style={{selected:{select}}}  className="UnitOptionTag" value={unit}>{unit}</option>
                  } 
             )}
             </select>
@@ -41,13 +54,20 @@ const UnitInput=(props)=>{
         {units[props.unitindex].map(
             (unit,index)=>{
                 let select=""
+                let disable=''
                 if(index==={secondoption}){
                      select="selected"
                 }
-              return   <option value={index}  Style={{selected:{select}}} className="UnitOptionTag" >{unit}</option>
+                if(index==={firstoption}){
+                    disable='disabled'
+                }
+              return   <option value={unit} isOptionDisabled={true}  className="UnitOptionTag" >{unit}</option>
              } 
         )}
         </select>
+
+       
+
     </div>
         </div>
         </div>
@@ -55,3 +75,8 @@ const UnitInput=(props)=>{
 }
 
 export default UnitInput;
+
+
+// <Select
+// option={data}
+// />

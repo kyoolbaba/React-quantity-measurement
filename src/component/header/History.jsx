@@ -4,7 +4,7 @@ class History extends Component{
     render(){
         return (
            <div className="History">
-           History
+          <a href="#" className="">History</a>
            </div>
         )
     }
