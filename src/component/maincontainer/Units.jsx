@@ -7,7 +7,7 @@ import voloff from '../../Assets/volumeoff.svg'
 import volon from '../../Assets/volon.svg'
 
 const Units =  (props)=>{
-    // const[actualUnitPresent,setUnit,sendSubUnits]=useState(Unit);  
+  
     const[imagesof,setImageBack]=useState([scaleoff,degreeoff,voloff]);
     const[imagesupdate,updateImage]=useState([scaleon,degreeoff,voloff]);
     const[imageson]=useState([scaleon,degreeon,volon])
@@ -62,11 +62,10 @@ const Units =  (props)=>{
         }
         updateImage(arr);
         setSelectedUnit(n)
-        // setUnit(n)
         props.setUnit(n);
         console.log(n+"Printing from UnitsHooks")
         console.log(units[n])
-        // console.log(unitSelected)
+
     }
     return(
         <div className="Units">
