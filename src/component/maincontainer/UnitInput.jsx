@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react';
 import UnitHook from './UnitsHook.jsx'
 import UH from './Unit'
 import Select from 'react-select';
+import axios from 'axios'
+const baseUrl="http://localhost:8080/api/quantitymeasurement/convert/"
 const UnitInput=(props)=>{
     const[temperature]=useState(['Farenhiet','Celcius','Kelvin'])
     const[length]=useState(['Centimeter','Millimeter','Inch','Foot','Kilometer','Yard'])
@@ -10,6 +12,10 @@ const UnitInput=(props)=>{
     const[firstoption,updateFirstOption]=useState(1)
     const[secondoption,updateSecondOption]=useState(2)
     const[data,setData]=useState()
+    const[quantity,setQuantity]=useState(0)
+    const[unitIn,setUnitIn]=useState("CENTIMETER")
+    const[unitOut,setUnitOut]=useState("CENTIMETER")
+    const[quantityOut,setQuantityOut]=useState(0);
     // const disableUnit=(e)=>{
     //     e.target.value
     // }
@@ -27,20 +33,49 @@ const UnitInput=(props)=>{
     // })
         
 
+    // useEffect(
+    //     axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
+    //         {
+    //             console.log(res)              
+    //         }
+    //         )
+    // )
+
+    const handleValueChange=(e)=>{
+        setQuantity(e.target.value)
+        console.log("Im Getting called")
+        console.log(`${baseUrl}${unitIn}/${quantity}/${unitOut}`)
+        axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
+            {
+                console.log(res)              
+            }
+            ).catch(console.log("Error caught"))
+    }
+
+    const handleUnitInChange=(e)=>{
+        setUnitIn(e.target.value.toUpperCase())
+    }
+
+    const handleUnitOutChange=(e)=>{
+        setUnitOut(e.target.value.toUpperCase())
+    }
+
+
     return(
+        
         <div className="UnitInput">
         <div className="UnitInput-From">
         <div className="from">From</div>
-        <input type="text" />
+        <input type="number" onChange={handleValueChange} value={quantity}  />
            <div className="UnitDiv-from" >
-            <select className="UnitSelectTag"  >
+            <select className="UnitSelectTag" onChange={handleUnitInChange}   >
             {units[props.unitindex].map(
                 (unit,index)=>{
                     let select=""
                     if(index==={firstoption}){
                          select="selected"
                     }
-                  return   <option  Style={{selected:{select}}}  className="UnitOptionTag" value={unit}>{unit}</option>
+                  return   <option  Style={{selected:{select}}}  className="UnitOptionTag"  value={unit}>{unit}</option>
                  } 
             )}
             </select>
@@ -48,9 +83,9 @@ const UnitInput=(props)=>{
         </div>
         <div className="UnitInput-To">
         <div className="to">To</div>
-        <input type="text"/>
+        <input type="number" value={quantityOut} />
         <div className="UnitDiv-to" >
-        <select className="UnitSelectTag"  >
+        <select className="UnitSelectTag" onChange={handleUnitOutChange} >
         {units[props.unitindex].map(
             (unit,index)=>{
                 let select=""
