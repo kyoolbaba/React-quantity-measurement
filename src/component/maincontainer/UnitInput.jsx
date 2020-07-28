@@ -11,7 +11,7 @@ const UnitInput=(props)=>{
     const[units]=useState([length,temperature,volume])
     const[firstoption,updateFirstOption]=useState(1)
     const[secondoption,updateSecondOption]=useState(2)
-    const[data,setData]=useState()
+    const[data,setData]=useState(props.unitindex)
     const[quantity,setQuantity]=useState(0)
     const[unitIn,setUnitIn]=useState("CENTIMETER")
     const[unitOut,setUnitOut]=useState("CENTIMETER")
@@ -33,31 +33,46 @@ const UnitInput=(props)=>{
     // })
         
 
-    // useEffect(
-    //     axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
-    //         {
-    //             console.log(res)              
-    //         }
-    //         )
-    // )
+    useEffect(()=>{
+
+        axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
+            {
+                console.log(res)
+                setQuantityOut(res.data)      
+            }
+            )
+
+        }
+        
+    )
 
     const handleValueChange=(e)=>{
         setQuantity(e.target.value)
         console.log("Im Getting called")
         console.log(`${baseUrl}${unitIn}/${quantity}/${unitOut}`)
-        axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
-            {
-                console.log(res)              
-            }
-            ).catch(console.log("Error caught"))
+  
     }
 
     const handleUnitInChange=(e)=>{
         setUnitIn(e.target.value.toUpperCase())
+        
+        axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
+            {
+                console.log(res)
+                setQuantityOut(res.data)      
+            }
+            )
     }
 
     const handleUnitOutChange=(e)=>{
         setUnitOut(e.target.value.toUpperCase())
+        
+        axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
+            {
+                console.log(res)
+                setQuantityOut(res.data)      
+            }
+            )
     }
 
 
@@ -75,7 +90,7 @@ const UnitInput=(props)=>{
                     if(index==={firstoption}){
                          select="selected"
                     }
-                  return   <option  Style={{selected:{select}}}  className="UnitOptionTag"  value={unit}>{unit}</option>
+                  return   <option  style={{selected:{select}}}  className="UnitOptionTag"  value={unit}>{unit}</option>
                  } 
             )}
             </select>
