@@ -24,10 +24,15 @@ const UnitInput=(props)=>{
         
 
     useEffect(()=>{
-        setUnitIn(unitInRef.current.value.toUpperCase())
-        setUnitOut(unitOutRef.current.value.toUpperCase())
+
         if(dataprev!==data){
-           
+           firstoption=units[0]
+           secondoption=units[1]
+           setUnitIn(unitInRef.current.value.toUpperCase())
+           setUnitOut(unitOutRef.current.value.toUpperCase())
+        }else{
+            setUnitIn(unitInRef.current.value.toUpperCase())
+            setUnitOut(unitOutRef.current.value.toUpperCase())
         }
 
         axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
@@ -91,7 +96,7 @@ const UnitInput=(props)=>{
         <input type="number" value={quantityOut} />
         <div className="UnitDiv-to" >
         <select className="UnitSelectTag" ref={unitOutRef} value={secondoption}  onChange={handleUnitOutChange} >
-        {units[props.unitindex].map(
+        {units[props.unitindex].reverse().map(
             (unit,index)=>{
                 let select=""
                 let disable=''
