@@ -6,16 +6,19 @@ import axios from 'axios'
 const baseUrl="http://localhost:8080/api/quantitymeasurement/convert/"
 const UnitInput=(props)=>{
     const[temperature]=useState(['Farenhiet','Celcius','Kelvin'])
-    const[length]=useState(['Centimeter','Millimeter','Inch','Foot','Kilometer','Yard'])
+    const[length]=useState(['Centimeter','Inch','Foot','Yard'])
     const[volume]=useState(['Liter','Milliliter','Gallon'])
     const[units]=useState([length,temperature,volume])
     const[firstoption,updateFirstOption]=useState(1)
     const[secondoption,updateSecondOption]=useState(2)
     const[data,setData]=useState(props.unitindex)
+    const[dataprev,setDataPrev]=useState(0)
     const[quantity,setQuantity]=useState(0)
     const[unitIn,setUnitIn]=useState("CENTIMETER")
     const[unitOut,setUnitOut]=useState("CENTIMETER")
     const[quantityOut,setQuantityOut]=useState(0);
+    const unitInRef=React.useRef();
+    const unitOutRef=React.useRef();
     // const disableUnit=(e)=>{
     //     e.target.value
     // }
@@ -34,7 +37,8 @@ const UnitInput=(props)=>{
         
 
     useEffect(()=>{
-
+        setUnitIn(unitInRef.current.value.toUpperCase())
+        setUnitOut(unitOutRef.current.value.toUpperCase())
         axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
             {
                 console.log(res)
@@ -83,7 +87,7 @@ const UnitInput=(props)=>{
         <div className="from">From</div>
         <input type="number" onChange={handleValueChange} value={quantity}  />
            <div className="UnitDiv-from" >
-            <select className="UnitSelectTag" onChange={handleUnitInChange}   >
+            <select className="UnitSelectTag" ref={unitInRef}  onChange={handleUnitInChange}   >
             {units[props.unitindex].map(
                 (unit,index)=>{
                     let select=""
@@ -100,7 +104,7 @@ const UnitInput=(props)=>{
         <div className="to">To</div>
         <input type="number" value={quantityOut} />
         <div className="UnitDiv-to" >
-        <select className="UnitSelectTag" onChange={handleUnitOutChange} >
+        <select className="UnitSelectTag" ref={unitOutRef}  onChange={handleUnitOutChange} >
         {units[props.unitindex].map(
             (unit,index)=>{
                 let select=""
