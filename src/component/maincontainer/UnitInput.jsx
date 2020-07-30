@@ -3,14 +3,15 @@ import UnitHook from './UnitsHook.jsx'
 import UH from './Unit'
 import Select from 'react-select';
 import axios from 'axios'
+import services from '../../services/services'
 const baseUrl="http://localhost:8080/api/quantitymeasurement/convert/"
 const UnitInput=(props)=>{
     const[temperature]=useState(['Fahrenhiet','Celcius','Kelvin'])
     const[length]=useState(['Centimeter','Inch','Foot','Yard'])
     const[volume]=useState(['Liter','Milliliter','Gallon'])
     const[units]=useState([length,temperature,volume])
-    const[firstoption,updateFirstOption]=useState(0)
-    const[secondoption,updateSecondOption]=useState(2)
+    const[firstoption,updateFirstOption]=useState('Centimeter')
+    const[secondoption,updateSecondOption]=useState('Yard')
     const[data,setData]=useState(props.unitindex)
     const[dataprev,setDataPrev]=useState(0)
     const[quantity,setQuantity]=useState(0)
@@ -24,21 +25,27 @@ const UnitInput=(props)=>{
         
 
     useEffect(()=>{
-
         if(dataprev!==data){
            firstoption=units[0]
            secondoption=units[1]
+           setData(data)
            setUnitIn(unitInRef.current.value.toUpperCase())
            setUnitOut(unitOutRef.current.value.toUpperCase())
+           inputValue.target.value=0;
+           console.log(inputValue)
         }else{
             setUnitIn(unitInRef.current.value.toUpperCase())
             setUnitOut(unitOutRef.current.value.toUpperCase())
         }
 
+        services.getData(baseUrl,unitIn,quantity,unitOut).then((res)=>{
+            console.log(res)
+            setQuantityOut(res.data) 
+        })
         axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
             {
                 console.log(res)
-                setQuantityOut(res.data) 
+              
             }
             )
 
@@ -72,7 +79,6 @@ const UnitInput=(props)=>{
 
 
     return(
-        
         <div className="UnitInput">
         <div className="UnitInput-From">
         <div className="from">From</div>
