@@ -12,8 +12,8 @@ const UnitInput=(props)=>{
     const[length]=useState(['Centimeter','Inch','Foot','Yard'])
     const[volume]=useState(['Liter','Milliliter','Gallon'])
     const[units]=useState([length,temperature,volume])
-    const[firstoption,updateFirstOption]=useState('Centimeter')
-    const[secondoption,updateSecondOption]=useState('Yard')
+    const[firstoption,updateFirstOption]=useState(units[props.unitindex][0])
+    const[secondoption,updateSecondOption]=useState(units[props.unitindex][1])
     const[data,setData]=useState(props.unitindex)
     const[dataprev,setDataPrev]=useState(0)
     const[quantity,setQuantity]=useState(0)
@@ -114,6 +114,10 @@ const UnitInput=(props)=>{
                 // if(index==={firstoption}){
                 //   return null;
                 // }
+                if(unit===firstoption){
+                    return   <option value={unit} disabled  isOptionDisabled={true}  className="UnitOptionTag" >{unit}</option>
+
+                }
               return   <option value={unit}  isOptionDisabled={true}  className="UnitOptionTag" >{unit}</option>
              } 
         )}
