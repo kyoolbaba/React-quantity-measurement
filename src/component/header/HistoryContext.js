@@ -6,24 +6,27 @@ export const  HistoryProvider= props=>{
         MainUnit:'Length',
         fromUnit:'cm',
         quantity:100,
-        toUnit:'mm'
+        toUnit:'mm',
+        value:0
     },
     {
         MainUnit:'Length',
         fromUnit:'cm',
         quantity:150,
-        toUnit:'mm'
+        toUnit:'mm',
+        value:0
     },{
         MainUnit:'Length',
         fromUnit:'cm',
         quantity:350,
-        toUnit:'mm'
+        toUnit:'mm',
+        value:0
     }
 
 ]
 )
         return(
-          <HistoryContext.Provider value={[history,updateHistory]} >
+          <HistoryContext.Provider value={{history,updateHistory}} >
           {props.children}   
           </HistoryContext.Provider>
         );

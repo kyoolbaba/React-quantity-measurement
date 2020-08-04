@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Units from './Units.jsx'
 import UnitInput from './UnitInput.jsx'
+import {HistoryProvider} from '../header/HistoryContext'
 class MainContainer extends Component{
     constructor(props){
         super(props)
@@ -23,7 +24,10 @@ render(){
         // setUnit={this.state}
           setUnit={this.setUnit} 
           />
+          <HistoryProvider>
         <UnitInput unitindex={this.state.unitindex}  />
+        </HistoryProvider>
+
         </div>
     )
 }

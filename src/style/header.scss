@@ -21,6 +21,21 @@ a{
     top:15px;
   }
   
+  .History-content{
+    align-items: center;
+    overflow-wrap: break-word;
+    width:20%;
+  }
+
+  .table-header {
+    display: flex;
+    position: relative;
+    top: 10vh;
+    font-weight: 400;
+    font-size: 2rem;;
+    flex-direction: row;
+    justify-content:space-around;
+  }
 
   
  
@@ -111,8 +126,11 @@ a{
     top:15px;
   }
   
+  .History-table{
 
-  
+  }
+
+
  
   .WelcomeHeading{
     align-items: center;

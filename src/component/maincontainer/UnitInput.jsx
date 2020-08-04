@@ -1,16 +1,17 @@
 import React,{useState,useEffect,useContext} from 'react';
-import UnitHook from './UnitsHook.jsx'
-import UH from './Unit'
-import Select from 'react-select';
 import axios from 'axios'
 import services from '../../services/services'
+import {HistoryContext} from '../header/HistoryContext'
+
 const baseUrl="http://localhost:8080/api/quantitymeasurement/convert/"
 
+
 const UnitInput=(props)=>{
-  
+     const {history,updateHistory}=useContext(HistoryContext)
     const[temperature]=useState(['Fahrenhiet','Celcius','Kelvin'])
     const[length]=useState(['Centimeter','Inch','Foot','Yard'])
     const[volume]=useState(['Liter','Milliliter','Gallon'])
+    const[mainUnits]=useState(['Length','Temperature','Volume'])
     const[units]=useState([length,temperature,volume])
     const[firstoption,updateFirstOption]=useState(units[props.unitindex][0])
     const[secondoption,updateSecondOption]=useState(units[props.unitindex][1])
@@ -46,20 +47,36 @@ const UnitInput=(props)=>{
         })
         axios.get(`${baseUrl}${unitIn}/${quantity}/${unitOut}`).then(res=>
             {
-                console.log(res)
-              
+                console.log(res)            
             }
             )
-
         }
-        
     )
+
+    useEffect(()=>{
+console.log(history)
+       var histt=[];
+       histt=JSON.parse(localStorage.getItem('histt'))||[];
+      
+        let newvalues={
+            MainUnit:mainUnits[props.unitindex],
+            fromUnit:unitIn,
+            quantity:quantity,
+            toUnit:unitOut,
+            value:quantityOut
+        }
+        histt.push(newvalues)
+      localStorage.setItem('histt',JSON.stringify(histt))     
+    //   let hist1=[]
+    //   hist1=JSON.parse(localStorage.getItem('history'))
+    //   console.log(JSON.parse(localStorage['history']))
+      
+    })
 
     const handleValueChange=(e)=>{
         setQuantity(e.target.value)
         console.log("Im Getting called")
         console.log(`${baseUrl}${unitIn}/${quantity}/${unitOut}`)
-  
     }
 
     const handleUnitInChange=(e)=>{
